@@ -3,9 +3,6 @@
 #include <stdio.h>            
 #include <stdlib.h>   
 
-/*
-Linked list class for node childen and siblings
-*/
 
 //node for linked list
 typedef struct LinkedNode {
@@ -14,6 +11,7 @@ typedef struct LinkedNode {
 	struct Node *prev;
 } LinkedNode;
 
+//Linked list with a few operations
 typedef struct List{
 	LinkedNode* head;
 	LinkedNode* tail;

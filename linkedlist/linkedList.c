@@ -12,6 +12,7 @@ int insertTail(List *list, void* data){
         //intialize head
         if(list->head == NULL){
             list->head = node;
+            list->size+=1;
             return 1;
         }
         //intialize tail
@@ -19,6 +20,7 @@ int insertTail(List *list, void* data){
             list->tail = node;
             list->head->next = list->tail;
             list->tail->prev = list->head;
+            list->size+=1;
             return 1;
         }
         //add to end of list
@@ -26,6 +28,7 @@ int insertTail(List *list, void* data){
         list->tail = node;
         list->tail->prev = pCur;
         pCur->next = list->tail;
+        list->size+=1;
         return 1;
     }
     return 0;
@@ -44,12 +47,14 @@ int removeNode(List* list, LinkedNode* node){
         if(node == list->head){
             list->head = node->next;
             free(node);
+            list->size-=1;
             return 1;
         }
         //remove if tail
         if(node == list->tail){
             list->tail = node->prev;
             free(node);
+            list->size-=1;
             return 1;
         }
         //remove if between head and tail 
@@ -57,7 +62,9 @@ int removeNode(List* list, LinkedNode* node){
         pcur->next = node->next;
         node->prev = pcur;
         free(node);
+        list->size-=1;
         return 1;
     }
+
     return 0;
 }
