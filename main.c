@@ -1,11 +1,7 @@
 #include <stdio.h>            
 #include <stdlib.h>            
 
-typedef struct node {
-	char  name[64];       
-	char  type;
-	struct node *child, *sibling, *parent;
-} NODE;
+
 
 
 NODE *root; 
