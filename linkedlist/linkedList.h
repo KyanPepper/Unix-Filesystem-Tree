@@ -1,30 +1,36 @@
-#ifndef LINKED_LIST_H
-#define LINKED_LIST_H
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
+#include <stdio.h>            
+#include <stdlib.h>   
+
 /*
 Linked list class for node childen and siblings
 */
-//node for linked list
-typedef struct Node {
-	char  name[64];       
-	char  type;
-	struct Node *next;
-    struct Node *prev;
 
-} Node;
+//node for linked list
+typedef struct LinkedNode {
+	void *data;
+	struct Node *next;
+	struct Node* prev;
+} LinkedNode;
+
 typedef struct List{
-	Node* head;
-	Node* tail;
+	LinkedNode* head;
+	LinkedNode* tail;
 	int size;
 }List;
 
+//inserts at the end of the linked list
+extern int insertTail(List *list, void* data);
 
-extern int insert(List &list, Node* node);
+//removes specfic node
+extern int removeNode(List *list, LinkedNode* node);
 
-extern int removeNode(List &list, Node* node);
+//prints data in order
+extern void printList(List *list);
 
-extern void printList(List &list);
+//allocates on node on heap
+extern LinkedNode* createNode(void* data);
 
-
-
-#endif // LINKED_LIST_H
+#endif
 
