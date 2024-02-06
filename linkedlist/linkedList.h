@@ -7,16 +7,24 @@ Linked list class for node childen and siblings
 typedef struct Node {
 	char  name[64];       
 	char  type;
-	struct node *next;
-    struct node *prev;
+	struct Node *next;
+    struct Node *prev;
 
 } Node;
-
 typedef struct List{
 	Node* head;
-	Node* parent;
+	Node* tail;
 	int size;
 }List;
+
+
+extern int insert(List &list, Node* node);
+
+extern int removeNode(List &list, Node* node);
+
+extern void printList(List &list);
+
+
 
 #endif // LINKED_LIST_H
 
