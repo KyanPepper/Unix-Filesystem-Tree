@@ -30,3 +30,34 @@ int insertTail(List *list, void* data){
     }
     return 0;
 }
+
+void printList(List* list){
+    LinkedNode *pcur = list->head;
+    while(pcur!= NULL){
+        printf(pcur->data);
+    }
+}
+
+int removeNode(List* list, LinkedNode* node){
+    if(node != NULL){
+        //remove if head
+        if(node == list->head){
+            list->head = node->next;
+            free(node);
+            return 1;
+        }
+        //remove if tail
+        if(node == list->tail){
+            list->tail = node->prev;
+            free(node);
+            return 1;
+        }
+        //remove if between head and tail 
+        LinkedNode *pcur = node->prev;
+        pcur->next = node->next;
+        node->prev = pcur;
+        free(node);
+        return 1;
+    }
+    return 0;
+}

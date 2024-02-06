@@ -11,7 +11,7 @@ Linked list class for node childen and siblings
 typedef struct LinkedNode {
 	void *data;
 	struct Node *next;
-	struct Node* prev;
+	struct Node *prev;
 } LinkedNode;
 
 typedef struct List{
@@ -30,7 +30,7 @@ extern int removeNode(List *list, LinkedNode* node);
 extern void printList(List *list);
 
 //allocates on node on heap
-extern LinkedNode* createNode(void* data);
+extern LinkedNode* createNode(LinkedNode* data);
 
 #endif
 
