@@ -7,8 +7,8 @@
 //node for linked list
 typedef struct LinkedNode {
 	void *data;
-	struct Node *next;
-	struct Node *prev;
+	struct LinkedNode *next;
+	struct LinkedNode *prev;
 } LinkedNode;
 
 //Linked list with a few operations
@@ -17,6 +17,9 @@ typedef struct List{
 	LinkedNode* tail;
 	int size;
 }List;
+
+//constructer for List
+extern int initList(List *list);
 
 //inserts at the end of the linked list
 extern int insertTail(List *list, void* data);
@@ -28,7 +31,7 @@ extern int removeNode(List *list, LinkedNode* node);
 extern void printList(List *list);
 
 //allocates on node on heap
-extern LinkedNode* createNode(LinkedNode* data);
+extern LinkedNode* createNode(void* data);
 
 #endif
 

@@ -1,7 +1,17 @@
 #include "linkedList.h"
 
+
+
+int initList(List* list){
+    list->size = 0;
+    list->head = NULL;
+    list->tail = NULL;
+}
 LinkedNode* createNode(void* data){
-   LinkedNode *node = malloc (sizeof(data));
+   LinkedNode *node = malloc (sizeof(LinkedNode));
+   node->data = data;
+   node->next = NULL;
+   node->prev=NULL;
    return node;
 }
 
@@ -10,7 +20,7 @@ int insertTail(List *list, void* data){
     LinkedNode *node = createNode(data);
     if(node != NULL){
         //intialize head
-        if(list->head == NULL){
+        if(list->head == NULL || list->size == 0){
             list->head = node;
             list->size+=1;
             return 1;
@@ -67,4 +77,36 @@ int removeNode(List* list, LinkedNode* node){
     }
 
     return 0;
+}
+
+int testInsert(){
+    List list;
+    initList(&list);
+    printf("in insert");
+    for(int i = 1; i<=7; i++){
+        int *data = malloc(sizeof(int));
+        *data = i;
+        insertTail(&list, data);
+        }
+        if(list.size == 7){ 
+            LinkedNode* pcur = list.head;
+            for(int i = 1; i<=7; i++){
+                if (pcur != NULL && *(int*)pcur->data != i) {
+                   printf("Value error: %d\n", *(int*)pcur->data);
+                    return 0;
+                }
+            pcur = pcur->next;
+        }
+        return 1;
+    }
+    printf("size error");
+    return 0;
+}
+
+
+int main(){
+   if(testInsert() == 1){
+        printf("Insert Passed");
+   }
+   if()
 }
