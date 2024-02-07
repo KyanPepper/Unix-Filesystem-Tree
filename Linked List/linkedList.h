@@ -4,7 +4,7 @@
 #include <stdlib.h>   
 
 
-//node for linked list
+//node for linked list (void* data is generic thus can use treenode make sure to cast)
 typedef struct LinkedNode {
 	void *data;
 	struct LinkedNode *next;
