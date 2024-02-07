@@ -93,7 +93,6 @@ int testInsert()
 {
     List list;
     initList(&list);
-    printf("in insert");
     for (int i = 1; i <= 7; i++)
     {
         int *data = malloc(sizeof(int));
@@ -122,13 +121,31 @@ void testPrintList()
 {
     List list;
     initList(&list);
-    printf("in insert");
     for(int i = 1; i<=7; i++){
         int *data = malloc(sizeof(int));
         *data = i;
         insertTail(&list, data);
     }
     printList(&list);
+    printf("\n Print List Passed");
+}
+
+int removeNodeTest(){
+    List list;
+    initList(&list);
+    for(int i = 1; i<=7; i++){
+        int *data = malloc(sizeof(int));
+        *data = i;
+        insertTail(&list, data);
+    }
+    LinkedNode* pcur = list.head;
+    pcur = pcur->next;
+    removeNode(&list,pcur);
+    
+    printList(&list);
+    printf("\n Remove Node Passed");
+
+    return 1;
 }
 
 int main()
@@ -137,8 +154,8 @@ int main()
     {
         printf("Insert Passed");
     }
-
-    printf("Print List Test, Expect 1....7 \n");
+    printf("\nPrint List Test, Expect 1....7 \n");
     testPrintList();
-    
+    printf("\nRemove Node Expected 2 \n New List:");
+    removeNodeTest();
 }
