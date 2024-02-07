@@ -15,11 +15,12 @@ int testInsert(){
     }
     if(list.size = 7){
         LinkedNode* pcur = list.head;
-        for(int i = 1; i<=7){
+        for(int i = 1; i<=7; i++){
             if(pcur->data != i){
                 printf("Value error")
                 return 0;
             }
+            pcur = pcur->next;
         }
         return 1;
     }
