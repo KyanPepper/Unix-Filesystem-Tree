@@ -1,5 +1,6 @@
-#include "linkedList.h"
-#include <string.h>
+#include "../LinkedList/LinkedList.h"
+
+
 //Tree node contains data and List of children aswell as parent
 typedef struct TreeNode {
     char  name[64];       

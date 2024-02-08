@@ -1,5 +1,5 @@
 #include "Tree.h"
-
+#include <string.h>
 
 TreeNode* createTreeNode(char name[64], char type){
     
@@ -17,7 +17,7 @@ void initTree(Tree* tree){
 }
 
 int insertTreeNode(Tree* tree, LinkedNode* node, char name[64], char type){
-    createNode()
+    createNode();
     if(tree->root == NULL){
         tree->root = node
     }

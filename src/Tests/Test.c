@@ -1,4 +1,5 @@
-
+#include "Test.h"
+#include "../LinkedList/LinkedList.h"
 int testInsert()
 {
     List list;
@@ -58,7 +59,7 @@ int removeNodeTest(){
     return 1;
 }
 
-int main()
+void runTests()
 {
     if (testInsert() == 1)
     {
