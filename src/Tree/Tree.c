@@ -1,6 +1,6 @@
 #include "Tree.h"
 #include <string.h>
-
+/*
 TreeNode* createTreeNode(char name[64], char type){
     
     TreeNode *node = malloc(sizeof(TreeNode));
@@ -22,3 +22,4 @@ int insertTreeNode(Tree* tree, LinkedNode* node, char name[64], char type){
         tree->root = node
     }
 }
+*/
