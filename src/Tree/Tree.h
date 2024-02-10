@@ -14,14 +14,22 @@ typedef struct Tree{
     int size;
 } Tree;
 
-//create node based on weather its a file or directory
+//create node based on weather its a file or directory and adds to link list
 extern TreeNode* createTreeNode(char name[], char type, TreeNode* parent);
 
 //inits null value for root and 0 for size
 extern void initTree(Tree* tree);
 
-//inserts into tree based on node postition 
-extern int insertTreeNode(Tree* tree, char name[64], char type);
+//Traverses list and returns node with matching data
+extern TreeNode* matchTreeNode(List* list, char c, int *index);
+
+//Does setup for insertTreeNode
+extern int InsertTreeNodeUser(Tree* tree, char name[64], char type);
+
+
+//Recursivly inserts into tree based on node path MUST CHECK HAVE INPUT FORMATED BEFOREHAND
+//Return results: 0: Path taken.... 1:Insert Worked 
+extern int insertTreeNode(TreeNode* node, char name[64], char type, int *index);
 
 //prints value for tree
 extern void printTree();

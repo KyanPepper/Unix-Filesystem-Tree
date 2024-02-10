@@ -3,7 +3,6 @@
 #include <stdio.h>            
 #include <stdlib.h>   
 
-
 //node for linked list (void* data is generic thus can use treenode make sure to cast)
 typedef struct LinkedNode {
 	void *data;
@@ -32,6 +31,8 @@ extern void printList(List *list);
 
 //allocates on node on heap
 extern LinkedNode* createNode(void* data);
+
+
 
 #endif
 
