@@ -45,30 +45,18 @@ TreeNode *matchTreeNode(List *list, char c, int *index)
 int InsertTreeNodeUser(Tree *tree, char name[64], char type)
 {
     int index = -1;
-    return insertTreeNode(tree->root, name, type, &index);
+    return insertTreeNode(tree->root, name, type);
 }
 
 
-int insertTreeNode(TreeNode *node, char name[64], char type, int *index)
+int insertTreeNode(TreeNode *node, char name[64], char type)
 {
-    index += 2;
-    if (index == 65)
-    {
-        return 0;
-    }
-    if (isalpha(name[*index]))
-    {
-        TreeNode *parent = node;
-        node = matchTreeNode(node->children, name[*index], &index);
-        if (node != NULL)
-        {
-            return insertTreeNode(node,name,type,index);
-        }
-        else if (!isalpha(name[*index + 2]))
-        {
-            createTreeNode(name, type, parent);
-        }
-    }
+  if(node->children != NULL){
+    createTreeNode(name,type ,node);
+    return 1;
+  }
 
     return 0;
 }
+
+

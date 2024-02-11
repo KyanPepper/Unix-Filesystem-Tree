@@ -29,7 +29,7 @@ extern int InsertTreeNodeUser(Tree* tree, char name[64], char type);
 
 //Recursivly inserts into tree based on node path MUST CHECK HAVE INPUT FORMATED BEFOREHAND
 //Return results: 0: Path taken.... 1:Insert Worked 
-extern int insertTreeNode(TreeNode* node, char name[64], char type, int *index);
+extern int insertTreeNode(TreeNode* node, char name[64], char type);
 
 //prints value for tree
 extern void printTree();
