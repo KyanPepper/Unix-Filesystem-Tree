@@ -1,5 +1,5 @@
 #include "Test.h"
-#include "../LinkedList/LinkedList.h"
+#include "../Commands/Commands.h"
 int testInsert()
 {
     List list;
@@ -59,6 +59,26 @@ int removeNodeTest(){
     return 1;
 }
 
+void testMkdir(){
+    Tree* tree;
+    initTree(tree);
+    char patha[] = "/a";
+    char pathb[] = "/b";
+    char pathc[] = "/c";
+    mkdir(tree->root,"a",patha);
+    mkdir(tree->root,"b",pathb);
+    mkdir(tree->root,"c",pathc);
+    if(tree->root->children != NULL){
+        printf("root: /\n children:");
+        List* childList = tree->root->children;
+        printList(childList);
+        printf("Mkdir test passed");
+        return;
+    }
+    printf("mkdir test failed");
+    return;
+}
+
 void runTests()
 {
     if (testInsert() == 1)
@@ -69,5 +89,7 @@ void runTests()
     testPrintList();
     printf("\nRemove Node Expected 2 \n New List:");
     removeNodeTest();
+    testMkdir();
+
 }
 

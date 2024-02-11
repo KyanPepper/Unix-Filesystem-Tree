@@ -1,6 +1,5 @@
 #ifndef COMMANDS_H
 #define COMMANDS_H
-#include "../LinkedList/LinkedList.h"
 #include "../Tree/Tree.h"
 
 //inserts new directory in tree

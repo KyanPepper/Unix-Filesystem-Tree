@@ -20,7 +20,10 @@ typedef struct List{
 //constructer for List
 extern int initList(List *list);
 
-//inserts at the end of the linked list
+/// @brief inserts at the tail
+/// @param list the list to insert on
+/// @param data the data to insert
+/// @return 0 if not inserted 1 if inserted
 extern int insertTail(List *list, void* data);
 
 //removes specfic node
