@@ -10,7 +10,7 @@
         "request": "launch",
         "program": "/home/kyan/projects/Unix-Filesystem-Tree/build/UFT",
         "args": [],
-        "stopAtEntry": true,
+        "stopAtEntry": false,
         "cwd": "${fileDirname}",
         "environment": [],
         "externalConsole": false,

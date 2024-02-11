@@ -60,17 +60,18 @@ int removeNodeTest(){
 }
 
 void testMkdir(){
-    Tree* tree;
+    Tree tree;
     initTree(&tree);
+    printf("%s root",tree.root->name);
     char patha[] = "/a";
     char pathb[] = "/b";
     char pathc[] = "/c";
-    mkdir(tree->root,"a",patha);
-    mkdir(tree->root,"b",pathb);
-    mkdir(tree->root,"c",pathc);
-    if(tree->root->children != NULL){
-        printf("root: /\n children:");
-        List* childList = tree->root->children;
+    TreeNode* root = tree.root;
+    mkdir(root,"a",patha);
+    mkdir(root,"b",pathb);
+    mkdir(root,"c",pathc);
+    if(root->children != NULL){
+        List* childList = root->children;
         printList(childList);
         printf("Mkdir test passed");
         return;
@@ -81,15 +82,16 @@ void testMkdir(){
 
 void runTests()
 {
-    if (testInsert() == 1)
+ /*   if (testInsert() == 1)
     {
         printf("Linked List Insert Passed Insert Passed");
     }
     printf("\nPrint List Test, Expect 1....7 \n");
     testPrintList();
     printf("\nRemove Node Expected 2 \n New List:");
-    removeNodeTest();
+    removeNodeTest(); */
     testMkdir();
+    
 
 }
 

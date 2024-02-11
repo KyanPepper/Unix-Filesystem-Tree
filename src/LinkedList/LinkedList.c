@@ -21,7 +21,7 @@ int insertTail(List *list, void *data)
     if (node != NULL)
     {
         // intialize head
-        if (list->head == NULL || list->size == 0)
+        if (list->head == NULL)
         {
             list->head = node;
             list->size += 1;

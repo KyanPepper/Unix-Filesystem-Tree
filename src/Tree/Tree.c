@@ -2,7 +2,6 @@
 #include <string.h>
 #include <ctype.h>
 
-
 TreeNode *createTreeNode(char name[64], char type, TreeNode *parent)
 {
     TreeNode *node = malloc(sizeof(TreeNode));
@@ -15,26 +14,37 @@ TreeNode *createTreeNode(char name[64], char type, TreeNode *parent)
     else
     {
         node->children = malloc(sizeof(List));
+        initList(node->children);
     }
-    node->parent = parent;
-    insertTail(parent->children, node);
+    if (strcmp(name, "/") == 0)
+    {
+        return node;
+    }
+    else
+    {
+        insertTail(parent->children, node);
+    }
     return node;
 }
 
 void initTree(Tree *tree)
 {
-    TreeNode *root = createTreeNode("/", 'd', NULL);
+    TreeNode *root = createTreeNode("/", 'd', root);
     tree->root = root;
     tree->size = 0;
+    printf("%s root",root->name);
 }
 
-TreeNode *matchTreeNode(List *list, char* c)
+TreeNode *matchTreeNode(List *list, char string[64])
 {
+    if(list == NULL){
+        return NULL;
+    }
     LinkedNode *pcur = list->head;
     while (pcur != NULL)
     {
         TreeNode *pdata = (TreeNode *)pcur->data;
-        if (strcmp(pdata->name,c) == 0)
+        if (strcmp(pdata->name, string) == 0)
         {
             return pdata;
         }
@@ -49,17 +59,8 @@ int InsertTreeNodeUser(Tree *tree, char name[64], char type)
     return insertTreeNode(tree->root, name, type);
 }
 
-
 int insertTreeNode(TreeNode *node, char name[64], char type)
 {
-  if(node->children != NULL){
-    createTreeNode(name,type ,node);
-    return 1;
-  }
-
-    return 0;
+        createTreeNode(name, type, node);
+        return 1;
 }
-
-
-
-

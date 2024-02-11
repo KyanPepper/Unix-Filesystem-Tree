@@ -1,19 +1,23 @@
 #include "Commands.h"
-
+#include "string.h"
 
 int mkdir(TreeNode* node, char name[64], char *pathname){
     TreeNode *current = node;
     TreeNode* parent;
     char* token = strtok(pathname, "/");
+    char* nextToken = NULL;
+    char string[64];
     while (token != NULL) {
-        TreeNode *child = matchTreeNode(current->children, token);
-        if ((child == NULL) || (child->type='f')) {
+        nextToken = strtok(NULL, "/");
+        strcpy(string,token);
+        TreeNode *child = matchTreeNode(current->children, string);
+        if ((child == NULL) && (nextToken != NULL)) {
             printf("Error: Directory %s does not exist\n", token);
             return 0;
         }
         parent = current;
         current = child;
-        token = strtok(NULL, "/");
+        token = nextToken;
     }
     insertTreeNode(parent,name,'d');
 }
