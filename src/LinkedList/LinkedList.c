@@ -1,5 +1,5 @@
 #include "LinkedList.h"
-
+#include "../Tree/Tree.h"
 int initList(List *list)
 {
     list->size = 0;
@@ -53,7 +53,8 @@ void printList(List *list)
     printf("LIST: ");
     while (pcur != NULL)
     {
-        printf("  %d", *(int*)pcur->data);
+        TreeNode* pdata = (TreeNode*)pcur->data;
+        printf("  %s ", pdata->name);
         pcur = pcur->next;
     }
     printf("List Size: %d" ,list->size);
