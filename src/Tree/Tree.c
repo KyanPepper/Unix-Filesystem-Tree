@@ -32,7 +32,6 @@ void initTree(Tree *tree)
     TreeNode *root = createTreeNode("/", 'd', root);
     tree->root = root;
     tree->size = 0;
-    printf("%s root",root->name);
 }
 
 TreeNode *matchTreeNode(List *list, char string[64])

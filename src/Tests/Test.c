@@ -66,7 +66,6 @@ void testMkdir()
 {
     Tree tree;
     initTree(&tree);
-    printf("%s root", tree.root->name);
     char patha[] = "/a";
     char pathb[] = "/b";
     char pathc[] = "/c";
@@ -77,11 +76,15 @@ void testMkdir()
     if (root->children != NULL)
     {
         List *childList = root->children;
-        printList(childList);
-        printf("Mkdir test passed");
+        printf("Mkdir test passed\n");
+        rmdir(root, patha);
+        rmdir(root, pathb);
+        rmdir(root, pathc);
+        free(root->children);
+        free(root);
         return;
     }
-    printf("mkdir test failed");
+    printf("mkdir test failed\n");
     return;
 }
 
@@ -89,7 +92,6 @@ void testRmdir()
 {
     Tree tree;
     initTree(&tree);
-    printf("%s root", tree.root->name);
     char patha[] = "/a";
     char pathb[] = "/b";
     char pathc[] = "/c";
@@ -97,17 +99,19 @@ void testRmdir()
     mkdir(root, "a", patha);
     mkdir(root, "b", pathb);
     mkdir(root, "c", pathc);
-    List *childList = root->children;
     rmdir(root, patha);
     rmdir(root, pathb);
     rmdir(root, pathc);
+    List *childList = root->children;
     if (childList->size == 0)
     {
-        printf("rmdir tests pasted");
+        printf("rmdir tests passed\n");
+        free(root->children);
+        free(root);
         return;
     }
 
-    printf("mkdir test failed");
+    printf("rmkdir test failed\n");
     return;
 }
 
@@ -121,6 +125,6 @@ void runTests()
        testPrintList();
        printf("\nRemove Node Expected 2 \n New List:");
        removeNodeTest(); */
-    //testMkdir();
+    testMkdir();
     testRmdir();
 }
