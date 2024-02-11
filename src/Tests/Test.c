@@ -61,7 +61,7 @@ int removeNodeTest(){
 
 void testMkdir(){
     Tree* tree;
-    initTree(tree);
+    initTree(&tree);
     char patha[] = "/a";
     char pathb[] = "/b";
     char pathc[] = "/c";
@@ -92,4 +92,6 @@ void runTests()
     testMkdir();
 
 }
+
+
 
