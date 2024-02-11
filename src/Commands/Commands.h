@@ -2,7 +2,10 @@
 #define COMMANDS_H
 #include "../Tree/Tree.h"
 
-//inserts new directory in tree
+//inserts new directory into tree
 extern int mkdir(TreeNode* node, char name[64],char* pathname);
 
+
+//removes directory if empty
+extern int rmdir(TreeNode* node,char* pathname);
 #endif

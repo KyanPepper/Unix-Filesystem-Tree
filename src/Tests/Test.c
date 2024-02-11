@@ -32,7 +32,8 @@ void testPrintList()
 {
     List list;
     initList(&list);
-    for(int i = 1; i<=7; i++){
+    for (int i = 1; i <= 7; i++)
+    {
         int *data = malloc(sizeof(int));
         *data = i;
         insertTail(&list, data);
@@ -41,37 +42,41 @@ void testPrintList()
     printf("\n Print List Passed");
 }
 
-int removeNodeTest(){
+int removeNodeTest()
+{
     List list;
     initList(&list);
-    for(int i = 1; i<=7; i++){
+    for (int i = 1; i <= 7; i++)
+    {
         int *data = malloc(sizeof(int));
         *data = i;
         insertTail(&list, data);
     }
-    LinkedNode* pcur = list.head;
+    LinkedNode *pcur = list.head;
     pcur = pcur->next;
-    removeNode(&list,pcur);
-    
+    removeNode(&list, pcur);
+
     printList(&list);
     printf("\n Remove Node Passed");
 
     return 1;
 }
 
-void testMkdir(){
+void testMkdir()
+{
     Tree tree;
     initTree(&tree);
-    printf("%s root",tree.root->name);
+    printf("%s root", tree.root->name);
     char patha[] = "/a";
     char pathb[] = "/b";
     char pathc[] = "/c";
-    TreeNode* root = tree.root;
-    mkdir(root,"a",patha);
-    mkdir(root,"b",pathb);
-    mkdir(root,"c",pathc);
-    if(root->children != NULL){
-        List* childList = root->children;
+    TreeNode *root = tree.root;
+    mkdir(root, "a", patha);
+    mkdir(root, "b", pathb);
+    mkdir(root, "c", pathc);
+    if (root->children != NULL)
+    {
+        List *childList = root->children;
         printList(childList);
         printf("Mkdir test passed");
         return;
@@ -80,20 +85,42 @@ void testMkdir(){
     return;
 }
 
-void runTests()
+void testRmdir()
 {
- /*   if (testInsert() == 1)
+    Tree tree;
+    initTree(&tree);
+    printf("%s root", tree.root->name);
+    char patha[] = "/a";
+    char pathb[] = "/b";
+    char pathc[] = "/c";
+    TreeNode *root = tree.root;
+    mkdir(root, "a", patha);
+    mkdir(root, "b", pathb);
+    mkdir(root, "c", pathc);
+    List *childList = root->children;
+    rmdir(root, patha);
+    rmdir(root, pathb);
+    rmdir(root, pathc);
+    if (childList->size == 0)
     {
-        printf("Linked List Insert Passed Insert Passed");
+        printf("rmdir tests pasted");
+        return;
     }
-    printf("\nPrint List Test, Expect 1....7 \n");
-    testPrintList();
-    printf("\nRemove Node Expected 2 \n New List:");
-    removeNodeTest(); */
-    testMkdir();
-    
 
+    printf("mkdir test failed");
+    return;
 }
 
-
-
+void runTests()
+{
+    /*   if (testInsert() == 1)
+       {
+           printf("Linked List Insert Passed Insert Passed");
+       }
+       printf("\nPrint List Test, Expect 1....7 \n");
+       testPrintList();
+       printf("\nRemove Node Expected 2 \n New List:");
+       removeNodeTest(); */
+    //testMkdir();
+    testRmdir();
+}

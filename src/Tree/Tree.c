@@ -53,6 +53,25 @@ TreeNode *matchTreeNode(List *list, char string[64])
     return NULL;
 }
 
+LinkedNode *matchListNode(List *list, char string[64])
+{
+    if(list == NULL){
+        return NULL;
+    }
+    LinkedNode *pcur = list->head;
+    while (pcur != NULL)
+    {
+        TreeNode *pdata = (TreeNode *)pcur->data;
+        if (strcmp(pdata->name, string) == 0)
+        {
+            return pcur;
+        }
+        pcur = pcur->next;
+    }
+    return NULL;
+}
+
+
 int InsertTreeNodeUser(Tree *tree, char name[64], char type)
 {
     int index = -1;

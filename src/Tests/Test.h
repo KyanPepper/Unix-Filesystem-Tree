@@ -10,10 +10,12 @@ extern void testPrintList();
 
 //test for node removal
 extern int removeNodeTest();
-/// 
 
-
+//test for mkdir
 extern void testMkdir();
+
+//test for rmdir
+extern void testRmdir();
 
 //Runs all tests
 extern void runTests();

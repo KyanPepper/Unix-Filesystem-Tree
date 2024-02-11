@@ -22,6 +22,9 @@ extern void initTree(Tree* tree);
 //Traverses list and returns node with matching data
 extern TreeNode* matchTreeNode(List* list, char *c);
 
+//traves list and return listnode with matching data
+extern LinkedNode* matchListNode(List *list, char string[64]);
+
 //Does setup for insertTreeNode
 extern int InsertTreeNodeUser(Tree* tree, char name[64], char type);
 
