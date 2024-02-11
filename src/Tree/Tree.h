@@ -21,7 +21,7 @@ extern TreeNode* createTreeNode(char name[], char type, TreeNode* parent);
 extern void initTree(Tree* tree);
 
 //Traverses list and returns node with matching data
-extern TreeNode* matchTreeNode(List* list, char c, int *index);
+extern TreeNode* matchTreeNode(List* list, char *c);
 
 //Does setup for insertTreeNode
 extern int InsertTreeNodeUser(Tree* tree, char name[64], char type);

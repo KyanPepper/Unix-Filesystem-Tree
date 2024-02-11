@@ -27,13 +27,13 @@ void initTree(Tree *tree)
     tree->size = 0;
 }
 
-TreeNode *matchTreeNode(List *list, char c, int *index)
+TreeNode *matchTreeNode(List *list, char* c)
 {
     LinkedNode *pcur = list->head;
     while (pcur != NULL)
     {
         TreeNode *pdata = (TreeNode *)pcur->data;
-        if (pdata->name[*index] == c)
+        if (strcmp(pdata->name,c) == 0)
         {
             return pdata;
         }
@@ -58,5 +58,7 @@ int insertTreeNode(TreeNode *node, char name[64], char type)
 
     return 0;
 }
+
+
 
 
