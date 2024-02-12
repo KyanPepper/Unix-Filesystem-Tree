@@ -85,3 +85,7 @@ int creat(TreeNode* node, char name[64], char* pathname){
     return 1;
 }
 
+int rm(TreeNode* node, char*pathname){
+    rmdir(node,pathname);
+}
+

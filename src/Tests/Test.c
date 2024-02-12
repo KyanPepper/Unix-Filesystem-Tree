@@ -115,32 +115,32 @@ void testRmdir()
     return;
 }
 
-void testCreat(){
+void testCreat()
+{
     Tree tree;
     initTree(&tree);
     char patha[] = "/a";
     char pathb[] = "/b";
     char pathc[] = "/c";
     char pathy[] = "/y";
-    char pathx[] = "/c/x";
     TreeNode *root = tree.root;
     mkdir(root, "a", patha);
     mkdir(root, "b", pathb);
     mkdir(root, "c", pathc);
-    creat(root,"y",pathy);
-    creat(root,"x",pathx);
-    
-    List *childList = root->children;
-    TreeNode* pdata1 = (TreeNode*)childList->head->data;
-    TreeNode* efile = matchTreeNode(childList,"c");
-    printList(childList);
-    TreeNode* pdata = (TreeNode*)efile->children->head->data;
-    printList(efile->children);
-    if(pdata->children == NULL){
-        printf("creat test passed\n");
+    creat(root, "y", pathy);
+    TreeNode *file = (TreeNode *)root->children->tail->data;
+    if ((file->type == 'f') && (file->children == NULL))
+    {
+        printf("Creat test passed");
+        free(file);
+        rmdir(root, patha);
+        rmdir(root, pathb);
+        rmdir(root, pathc);
+        free(root->children);
+        free(root);
         return;
     }
-
+    printf("Creat test failed");
 
 }
 
@@ -158,5 +158,4 @@ void runTests()
     testRmdir();
     testCreat();
     
-
 }

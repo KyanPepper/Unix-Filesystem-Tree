@@ -11,4 +11,7 @@ extern int rmdir(TreeNode* node,char* pathname);
 
 //inserts a new file inside tree
 extern int creat(TreeNode* node,char name[64], char* pathname);
+
+//removes file from tree
+extern rm(TreeNode* node, char*pathname);
 #endif
