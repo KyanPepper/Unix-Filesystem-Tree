@@ -150,20 +150,20 @@ void testRm(){
 
     Tree tree;
     initTree(&tree);
-    char patha[] = "/a";
-    char pathb[] = "/a/b";
+    char path[] = "/";
+    char pathb[] = "/a";
     char pathb2[] = "/a/b";
     char pathy[] = "/y";
     TreeNode *root = tree.root;
-    mkdir(root, "a", patha);
-    creat(root,"b",pathb);
-    creat(root, "y", pathy);
+    mkdir(root, "a", path);
+    creat(root,"b",path);
+    creat(root, "y", path);
     rm(root,pathb2);
     rm(root,pathy);
     
-    if(root->children->size == 1){
+    if(root->children->size == 2){
         printf("\nRm test passed\n");
-        rmdir(root,"/a");
+        rmdir(root,pathb);
         free(root->children);
         free(root);
         return;
@@ -230,6 +230,7 @@ void runTests()
     testMkdir();
     testRmdir();
     testCreat();
+    //leak on create
     testRm();
     testCd();
     testLs();
