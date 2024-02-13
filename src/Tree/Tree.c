@@ -7,6 +7,7 @@ TreeNode *createTreeNode(char name[64], char type, TreeNode *parent)
     TreeNode *node = malloc(sizeof(TreeNode));
     strcpy(node->name, name);
     node->type = type;
+    node->parent = parent;
     if (type == 'f')
     {
         node->children = NULL;

@@ -1,4 +1,5 @@
 #include "Test.h"
+#include "string.h"
 #include "../Commands/Commands.h"
 int testInsert()
 {
@@ -66,20 +67,19 @@ void testMkdir()
 {
     Tree tree;
     initTree(&tree);
-    char patha[] = "/a";
-    char pathb[] = "/b";
-    char pathc[] = "/c";
+    char patha[] = "/";
+    char pathb[] = "/";
+    char dpatha[] = "/a";
+    char dpathb[] = "/b";
     TreeNode *root = tree.root;
     mkdir(root, "a", patha);
     mkdir(root, "b", pathb);
-    mkdir(root, "c", pathc);
-    if (root->children != NULL)
+    if (root->children != NULL && root->children->size == 2)
     {
         List *childList = root->children;
         printf("Mkdir test passed\n");
-        rmdir(root, patha);
-        rmdir(root, pathb);
-        rmdir(root, pathc);
+        rmdir(root, dpatha);
+        rmdir(root, dpathb);
         free(root->children);
         free(root);
         return;
@@ -95,10 +95,11 @@ void testRmdir()
     char patha[] = "/a";
     char pathb[] = "/b";
     char pathc[] = "/c";
+
     TreeNode *root = tree.root;
-    mkdir(root, "a", patha);
-    mkdir(root, "b", pathb);
-    mkdir(root, "c", pathc);
+    mkdir(root, "a", NULL);
+    mkdir(root, "b", NULL);
+    mkdir(root, "c", NULL);
     rmdir(root, patha);
     rmdir(root, pathb);
     rmdir(root, pathc);
