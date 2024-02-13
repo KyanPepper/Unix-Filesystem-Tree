@@ -141,7 +141,7 @@ void testCreat()
         return;
     }
     printf("Creat test failed");
-
+    return;
 }
 
 void testRm(){
@@ -181,7 +181,7 @@ void testCd(){
     creat(root,"b",pathb);
     TreeNode* pCur = cd(root,pathb2);
     if(strcmp(pCur->name,"b") == 0){
-        printf("CD test passed");
+        printf("CD test passed\n");
         TreeNode* pParent = pCur->parent;
         char pathc[] = "/a/b";
         rm(root,pathc);
@@ -190,6 +190,29 @@ void testCd(){
         free(root);
         return;
     }
+    printf("CD test failed");
+    return;
+}
+
+void testLs(){
+    Tree tree;
+    initTree(&tree);
+    char patha[] = "/a";
+    char pathb[] = "/b";
+    char pathc[] = "/c";
+    TreeNode *root = tree.root;
+    printf("ls test expected: a b c actual: ");
+    mkdir(root, "a", patha);
+    mkdir(root, "b", pathb);
+    mkdir(root, "c", pathc);
+    ls(root,NULL);
+    rmdir(root, patha);
+    rmdir(root, pathb);
+    rmdir(root, pathc);
+    free(root->children);
+    free(root);
+    printf(" ls test passed");
+
 }
 
 void runTests()
@@ -207,4 +230,6 @@ void runTests()
     testCreat();
     testRm();
     testCd();
+    testLs();
 }
+

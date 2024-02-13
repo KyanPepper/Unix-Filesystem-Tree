@@ -50,14 +50,14 @@ int insertTail(List *list, void *data)
 void printList(List *list)
 {
     LinkedNode *pcur = list->head;
-    printf("LIST: ");
+ //   printf("LIST: ");
     while (pcur != NULL)
     {
         TreeNode* pdata = (TreeNode*)pcur->data;
-        printf("  %s ", pdata->name);
+        printf("%s ", pdata->name);
         pcur = pcur->next;
     }
-    printf("List Size: %d" ,list->size);
+    //printf("List Size: %d" ,list->size);
 }
 
 int removeNode(List *list, LinkedNode *node)

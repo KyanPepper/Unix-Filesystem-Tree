@@ -139,3 +139,18 @@ TreeNode* cd(TreeNode* node, char* path){
     }
     return child;
 }
+
+void ls(TreeNode* node, char *path){
+    if(path == NULL){
+        printList(node->children);
+        return;
+    }
+    TreeNode* pcur = cd(node,path);
+    if(pcur == NULL){
+        printf("Error: Directory Path Doesnt Exit");
+        return;
+    }
+    printList(pcur);
+}
+
+
