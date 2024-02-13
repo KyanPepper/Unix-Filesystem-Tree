@@ -23,6 +23,8 @@ extern void testRm();
 //test for creat
 extern void testCreat();
 
+extern void testCd();
+
 //Runs all tests
 extern void runTests();
 

@@ -86,7 +86,7 @@ int creat(TreeNode* node, char name[64], char* pathname){
 }
 
 int rm(TreeNode* node, char*pathname){
-     TreeNode *current = node;
+    TreeNode *current = node;
     TreeNode *parent;
     LinkedNode* parentOfChild;
     char *token = strtok(pathname, "/");
@@ -113,3 +113,29 @@ int rm(TreeNode* node, char*pathname){
         return 1;
 }
 
+TreeNode* cd(TreeNode* node, char* path){
+    TreeNode* pCur = node;
+    if(path == NULL){
+        while(strcmp(pCur->name, "/") != 0) {
+            pCur = pCur->parent;
+        }
+    }
+    char *token = strtok(path, "/");
+    char *nextToken = NULL;
+    char string[64];
+    TreeNode *child;
+    while (token != NULL)
+    {
+        nextToken = strtok(NULL, "/");
+        strcpy(string, token);
+        child = matchTreeNode(pCur->children, string);
+        if ((child == NULL) && (nextToken != NULL))
+        {
+            printf("Error: Directory %s does not exist\n", token);
+            return NULL;
+        }
+        pCur = child;
+        token = nextToken;
+    }
+    return child;
+}

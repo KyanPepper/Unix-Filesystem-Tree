@@ -168,9 +168,30 @@ void testRm(){
     }
     printf("rm test failed");
     return;
-    
-
 }
+
+void testCd(){
+    Tree tree;
+    initTree(&tree);
+    TreeNode *root = tree.root;
+    char patha[] = "/a";
+    char pathb[] = "/a/b";
+    char pathb2[] = "/a/b";
+    mkdir(root, "a", patha);
+    creat(root,"b",pathb);
+    TreeNode* pCur = cd(root,pathb2);
+    if(strcmp(pCur->name,"b") == 0){
+        printf("CD test passed");
+        TreeNode* pParent = pCur->parent;
+        char pathc[] = "/a/b";
+        rm(root,pathc);
+        rmdir(root,"/a");
+        free(root->children);
+        free(root);
+        return;
+    }
+}
+
 void runTests()
 {
     /*   if (testInsert() == 1)
@@ -185,4 +206,5 @@ void runTests()
     testRmdir();
     testCreat();
     testRm();
+    testCd();
 }
