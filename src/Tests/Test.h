@@ -17,6 +17,9 @@ extern void testMkdir();
 //test for rmdir
 extern void testRmdir();
 
+//test for rm
+extern void testRm();
+
 //test for creat
 extern void testCreat();
 

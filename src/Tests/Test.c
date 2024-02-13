@@ -144,6 +144,33 @@ void testCreat()
 
 }
 
+void testRm(){
+
+    Tree tree;
+    initTree(&tree);
+    char patha[] = "/a";
+    char pathb[] = "/a/b";
+    char pathb2[] = "/a/b";
+    char pathy[] = "/y";
+    TreeNode *root = tree.root;
+    mkdir(root, "a", patha);
+    creat(root,"b",pathb);
+    creat(root, "y", pathy);
+    rm(root,pathb2);
+    rm(root,pathy);
+    
+    if(root->children->size == 1){
+        printf("\nRm test passed\n");
+        rmdir(root,"/a");
+        free(root->children);
+        free(root);
+        return;
+    }
+    printf("rm test failed");
+    return;
+    
+
+}
 void runTests()
 {
     /*   if (testInsert() == 1)
@@ -157,5 +184,5 @@ void runTests()
     testMkdir();
     testRmdir();
     testCreat();
-    
+    testRm();
 }
