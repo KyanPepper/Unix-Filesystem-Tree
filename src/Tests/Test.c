@@ -120,15 +120,16 @@ void testCreat()
 {
     Tree tree;
     initTree(&tree);
-    char patha[] = "/a";
+    char path[] = "/";
+    char patha[] = "a";
     char pathb[] = "/b";
     char pathc[] = "/c";
     char pathy[] = "/y";
     TreeNode *root = tree.root;
-    mkdir(root, "a", patha);
-    mkdir(root, "b", pathb);
-    mkdir(root, "c", pathc);
-    creat(root, "y", pathy);
+    mkdir(root, "a", path);
+    mkdir(root, "b", path);
+    mkdir(root, "c", path);
+    creat(root, "y", path);
     TreeNode *file = (TreeNode *)root->children->tail->data;
     if ((file->type == 'f') && (file->children == NULL))
     {

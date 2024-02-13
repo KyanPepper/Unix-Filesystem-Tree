@@ -37,26 +37,15 @@ int rmdir(TreeNode *node, char *pathname)
 
 
 int creat(TreeNode* node, char name[64], char* pathname){
-    TreeNode *current = node;
-    TreeNode *parent;
-    char *token = strtok(pathname, "/");
-    char *nextToken = NULL;
-    char string[64];
-    while (token != NULL)
-    {
-        nextToken = strtok(NULL, "/");
-        strcpy(string, token);
-        TreeNode *child = matchTreeNode(current->children, string);
-        if ((child == NULL) && (nextToken != NULL))
-        {
-            printf("Error: Directory %s does not exist\n", token);
-            return 0;
-        }
-        parent = current;
-        current = child;
-        token = nextToken;
+    if((pathname == NULL) || strcmp(pathname, "/") == 0){
+        insertTreeNode(node, name, 'f');
+        return 1;
     }
-    insertTreeNode(parent, name, 'f');
+    TreeNode* pCur = cd(node,pathname);
+    if(pCur == NULL){
+        return 0;
+    }  
+    insertTreeNode(pCur, name, 'f');
     return 1;
 }
 
@@ -111,6 +100,10 @@ TreeNode* cd(TreeNode* node, char* path){
         }
         pCur = child;
         token = nextToken;
+    }
+    if(child->type == 'f'){
+        printf("Cannot cd into a file");
+        return NULL;
     }
     return child;
 }
