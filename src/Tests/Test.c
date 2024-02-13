@@ -176,8 +176,8 @@ void testCd(){
     Tree tree;
     initTree(&tree);
     TreeNode *root = tree.root;
-    char patha[] = "/a";
-    char pathb[] = "/a/b";
+    char patha[] = "/";
+    char pathb[] = "/a";
     char pathb2[] = "/a/b";
     mkdir(root, "a", patha);
     creat(root,"b",pathb);
@@ -199,14 +199,15 @@ void testCd(){
 void testLs(){
     Tree tree;
     initTree(&tree);
+    char path[] = "/";
     char patha[] = "/a";
     char pathb[] = "/b";
     char pathc[] = "/c";
     TreeNode *root = tree.root;
     printf("ls test expected: a b c actual: ");
-    mkdir(root, "a", patha);
-    mkdir(root, "b", pathb);
-    mkdir(root, "c", pathc);
+    mkdir(root, "a", path);
+    mkdir(root, "b", path);
+    mkdir(root, "c", path);
     ls(root,NULL);
     rmdir(root, patha);
     rmdir(root, pathb);
