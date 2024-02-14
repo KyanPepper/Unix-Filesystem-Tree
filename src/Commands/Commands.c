@@ -1,6 +1,7 @@
 #include "Commands.h"
 #include "string.h"
 
+
 int mkdir(TreeNode *node, char name[64], char *pathname)
 {
     if((pathname == NULL) || strcmp(pathname, "/") == 0){
@@ -105,6 +106,14 @@ void ls(TreeNode* node, char *path){
         return;
     }
     printList(pcur);
+}
+
+void pwd(TreeNode* node){
+    TreeNode* pCur = node->parent;
+    if(strcmp(pCur->name,"/") == 0){
+        printf("/");
+    }
+    printf("%s",node->name);
 }
 
 

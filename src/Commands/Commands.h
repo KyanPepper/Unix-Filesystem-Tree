@@ -18,6 +18,9 @@ extern int rm(TreeNode* node, char*pathname);
 //enters into new directory
 extern TreeNode* cd(TreeNode* node, char* path);
 
+//prints the working directory
+extern void pwd(TreeNode* node);
+
 //Lists all file in directory
 extern void ls(TreeNode* node, char* path);
 
