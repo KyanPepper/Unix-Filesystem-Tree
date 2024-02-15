@@ -235,5 +235,6 @@ void runTests()
     testRm();
     testCd();
     testLs();
+    printf("\n");
 }
 

@@ -8,18 +8,21 @@ int main() {
 	Tree tree;
 	initTree(&tree);
 	TreeNode* cwd = tree.root;
-
+	int i,j;
 	while (1)
 	{
 		char command[64], path[64], name[64];
 
-		int i = getInput(cwd, command, path, name);
-		if(i == -1){
+		 i = getInput(cwd, command, path, name);
+		if(i == 1){
+			 j = findCommand(cwd, command, path, name);
+		}
+		if(j == -1){
 			break;
 		}
-		findCommand(cwd, command, path, name);
+		
 
 	}
-
+	printf("Quitting...");
 }
 

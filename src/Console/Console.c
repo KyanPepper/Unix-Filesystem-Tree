@@ -7,25 +7,24 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
     fgets(input, sizeof(input), stdin);
     input[strcspn(input, "\n")] = '\0';
     char temp[100];
-    strcpy(temp, input);
     char *token = strtok(temp, " ");
     if (token == NULL)
     {
         return 0;
     }
-    if(strcmp(token,"quit") == 0) {
-        return -1;
-    }
-    strcpy(command, token);
+    strcpy(temp, input);
+    strcpy(command, temp);
 
     token = strtok(NULL, " ");
+   
     if (token == NULL)
     {
         name = NULL;
         path = NULL;
         return 1;
     }
-    strcpy(path, token);
+    strcpy(temp, input);
+    strcpy(path, temp);
 
     token = strtok(NULL, " ");
     if (token == NULL)
@@ -33,7 +32,8 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
         name = NULL;
         return 1;
     }
-    strcpy(name, token);
+    strcpy(temp, input);
+    strcpy(name, temp);
 
     token = strtok(NULL, " ");
     if (token != NULL)
@@ -47,6 +47,9 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
 
 int findCommand(TreeNode *cwd, char *command, char *path, char *name)
 {
+    if (strcmp(command, "quit") == 0){
+        return -1;
+    }
     if (strcmp(command, "mkdir") == 0)
     {
         if (name == NULL && path == NULL)
