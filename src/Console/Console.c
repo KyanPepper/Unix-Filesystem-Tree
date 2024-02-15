@@ -1,8 +1,5 @@
-#include "string.h"
-#include "Commands.h"
-#include <stdio.h>
-
-int getInput(char *cwd, char *command, char *path, char *name)
+#include "Console.h"
+int getInput(TreeNode *cwd, char *command, char *path, char *name)
 {
     char input[100];
     pwd(cwd);
@@ -15,6 +12,9 @@ int getInput(char *cwd, char *command, char *path, char *name)
     if (token == NULL)
     {
         return 0;
+    }
+    if(strcmp(token,"quit") == 0) {
+        return -1;
     }
     strcpy(command, token);
 
@@ -44,8 +44,6 @@ int getInput(char *cwd, char *command, char *path, char *name)
     return 1;
 }
 
-#include "Commands.h"
-#include "string.h"
 
 int findCommand(TreeNode *cwd, char *command, char *path, char *name)
 {
@@ -100,7 +98,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
             printf("'unknown operand %s'", name);
             return 0;
         }
-        cwd = (cwd, path);
+        cwd = cd(cwd, path);
         return 1;
     }
     else if (strcmp(command, "ls") == 0)

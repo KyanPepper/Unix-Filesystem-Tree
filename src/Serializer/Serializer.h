@@ -1,4 +1,3 @@
-#include "../Tree/Tree.h"
 #include "../Commands/Commands.h"
 //searializes tree by preorder traversal
 extern void saveTree(TreeNode* node,FILE* file, char *parents);
