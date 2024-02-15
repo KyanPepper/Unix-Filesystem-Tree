@@ -15,7 +15,7 @@ int main() {
 
 		 i = getInput(cwd, command, path, name);
 		if(i == 1){
-			 j = findCommand(cwd, command, path, name);
+			j = findCommand(cwd, command, path, name);
 		}
 		if(j == -1){
 			break;

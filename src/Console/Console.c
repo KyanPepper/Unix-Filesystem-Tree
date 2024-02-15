@@ -6,8 +6,11 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
     printf("$");
     fgets(input, sizeof(input), stdin);
     input[strcspn(input, "\n")] = '\0';
-    char temp[100];
-    char *token = strtok(temp, " ");
+    char temp[100] ="";
+    char temp2[100] ="";
+    char temp3[100] = "";
+    char *token = NULL;
+    token = strtok(input, " ");
     if (token == NULL)
     {
         return 0;
@@ -23,8 +26,8 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
         path = NULL;
         return 1;
     }
-    strcpy(temp, input);
-    strcpy(path, temp);
+    strcpy(temp2, input);
+    strcpy(path, temp2);
 
     token = strtok(NULL, " ");
     if (token == NULL)
@@ -32,8 +35,8 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
         name = NULL;
         return 1;
     }
-    strcpy(temp, input);
-    strcpy(name, temp);
+    strcpy(temp3, token);
+    strcpy(name, temp3);
 
     token = strtok(NULL, " ");
     if (token != NULL)
@@ -52,12 +55,12 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     }
     if (strcmp(command, "mkdir") == 0)
     {
-        if (name == NULL && path == NULL)
+        if ((strlen(name) == 0) && (strlen(path) == 0))
         {
             printf("'mkdir' missing operand\n");
             return 0;
         }
-        else if (name == NULL)
+        else if (strlen(name) == 0)
         {
             return mkdir(cwd, path, NULL);
         }
@@ -65,7 +68,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     }
     else if (strcmp(command, "rmdir") == 0)
     {
-        if (name != NULL)
+        if (strlen(name) != 0)
         {
             printf("'unknown operand %s'", name);
             return 0;
@@ -74,12 +77,12 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     }
     else if (strcmp(command, "creat") == 0)
     {
-        if (name == NULL && path == NULL)
+        if ((strlen(name) == 0) && (strlen(path) == 0))
         {
             printf("'creat' missing operand\n");
             return 0;
         }
-        else if (name == NULL)
+        else if (strlen(name) == 0)
         {
             return creat(cwd, path, NULL);
         }
@@ -87,7 +90,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     }
     else if (strcmp(command, "rm") == 0)
     {
-        if (name != NULL)
+        if (strlen(name) != 0)
         {
             printf("'unknown operand %s'", name);
             return 0;
@@ -96,7 +99,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     }
     else if (strcmp(command, "cd") == 0)
     {
-        if (name != NULL)
+        if (strlen(name) != 0)
         {
             printf("'unknown operand %s'", name);
             return 0;
@@ -106,7 +109,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     }
     else if (strcmp(command, "ls") == 0)
     {
-        if (name != NULL)
+        if (strlen(name) != 0)
         {
             printf("'unknown operand %s'", name);
             return 0;
@@ -116,9 +119,9 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     }
     else if (strcmp(command, "pwd") == 0)
     {
-        if (path != NULL)
+        if (strlen(path) != 0)
         {
-            printf("'unknown operand %s'", name);
+            printf("'unknown operand %s'", path);
             return 0;
         }
         pwd(cwd);
