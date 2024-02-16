@@ -52,6 +52,12 @@ int main()
 			saveTree(tree.root, file, "");
 			fclose(file);
 		}
+		else if (j == -8)
+		{
+			FILE *file = fopen("fssim_Kotschevar-Smead.txt", "w");
+			loadTree(tree.root, file);
+			fclose(file);
+		}
 	}
 	printf("Quitting...");
 	FILE *file = fopen("fssim_Kotschevar-Smead.txt", "w");

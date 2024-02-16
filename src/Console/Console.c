@@ -140,6 +140,15 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
         }
         return -6;
     }
+    else if (strcmp(command, "load") == 0)
+    {
+        if (strcmp(path, "fssim_Kotschevar-Smead") != 0)
+        {
+            printf("'unknown file %s'\n", path);
+            return 0;
+        }
+        return -8;
+    }
     else
     {
         printf("Unknown command: %s\n", command);
