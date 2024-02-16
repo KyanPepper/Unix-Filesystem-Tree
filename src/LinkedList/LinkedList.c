@@ -53,9 +53,13 @@ void printList(List *list)
     //   printf("LIST: ");
     while (pcur != NULL)
     {
+
         TreeNode *pdata = (TreeNode *)pcur->data;
-        printf("%s ", pdata->name);
-        pcur = pcur->next;
+        if (pdata != NULL)
+        {
+            printf("%c %s ", pdata->type, pdata->name);
+            pcur = pcur->next;
+        }
     }
     // printf("List Size: %d" ,list->size);
 }
@@ -69,6 +73,7 @@ int removeNode(List *list, LinkedNode *node)
             list->head = NULL;
             list->tail = NULL;
             free(node);
+            node = NULL;
             list->size -= 1;
             return 1;
         }
@@ -77,6 +82,7 @@ int removeNode(List *list, LinkedNode *node)
         {
             list->head = node->next;
             free(node);
+            node =NULL;
             list->size -= 1;
             return 1;
         }
@@ -85,6 +91,7 @@ int removeNode(List *list, LinkedNode *node)
         {
             list->tail = node->prev;
             free(node);
+            node = NULL;
             list->size -= 1;
             return 1;
         }
@@ -94,6 +101,7 @@ int removeNode(List *list, LinkedNode *node)
         pcur->next = node->next;
         node->next->prev = pcur;
         free(node);
+        node =NULL;
         list->size -= 1;
         return 1;
     }

@@ -62,8 +62,9 @@ int rm(TreeNode *node, char *pathname)
     }
 
     TreeNode *pCur = cd(node, pathname);
-    if (pCur == NULL)
+    if (pCur == NULL || pCur->type == 'd')
     {
+        printf("rm cannot remove directory\n");
         return 0;
     }
     TreeNode *parent = pCur->parent;

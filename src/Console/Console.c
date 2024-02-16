@@ -129,6 +129,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
             return 0;
         }
         pwd(cwd);
+        printf("\n");
         return 1;
     }
     else if (strcmp(command, "save") == 0)

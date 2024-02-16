@@ -59,7 +59,7 @@ int main()
 			fclose(file);
 		}
 	}
-	printf("Quitting...");
+	printf("Quitting...\n");
 	FILE *file = fopen("fssim_Kotschevar-Smead.txt", "w");
 	saveTree(tree.root, file, "");
 	fclose(file);
