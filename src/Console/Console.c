@@ -70,7 +70,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     {
         if (strlen(name) != 0)
         {
-            printf("'unknown operand %s'", name);
+            printf("'unknown operand %s\n'", name);
             return 0;
         }
         return rmdir(cwd, path);
@@ -92,7 +92,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     {
         if (strlen(name) != 0)
         {
-            printf("'unknown operand %s'", name);
+            printf("'unknown operand %s'\n", name);
             return 0;
         }
         return rm(cwd, path);
@@ -101,7 +101,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     {
         if (strlen(name) != 0)
         {
-            printf("'unknown operand %s'", name);
+            printf("'unknown operand %s'\n", name);
             return 0;
         }
         return -7;
@@ -110,7 +110,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     {
         if (strlen(name) != 0)
         {
-            printf("'unknown operand %s'", name);
+            printf("'unknown operand %s'\n", name);
             return 0;
         }
          if (strlen(path) == 0)
@@ -125,7 +125,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
     {
         if (strlen(path) != 0)
         {
-            printf("'unknown operand %s'", path);
+            printf("'unknown operand %s'\n", path);
             return 0;
         }
         pwd(cwd);
