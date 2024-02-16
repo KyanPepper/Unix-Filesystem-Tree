@@ -146,7 +146,8 @@ void testCreat()
     return;
 }
 
-void testRm(){
+void testRm()
+{
 
     Tree tree;
     initTree(&tree);
@@ -156,14 +157,15 @@ void testRm(){
     char pathy[] = "/y";
     TreeNode *root = tree.root;
     mkdir(root, "a", path);
-    creat(root,"b",path);
+    creat(root, "b", path);
     creat(root, "y", path);
-    rm(root,pathb2);
-    rm(root,pathy);
-    
-    if(root->children->size == 2){
+    rm(root, pathb2);
+    rm(root, pathy);
+
+    if (root->children->size == 2)
+    {
         printf("\nRm test passed\n");
-        rmdir(root,pathb);
+        rmdir(root, pathb);
         free(root->children);
         free(root);
         return;
@@ -172,7 +174,8 @@ void testRm(){
     return;
 }
 
-void testCd(){
+void testCd()
+{
     Tree tree;
     initTree(&tree);
     TreeNode *root = tree.root;
@@ -180,14 +183,15 @@ void testCd(){
     char pathb[] = "/a";
     char pathb2[] = "/a/b";
     mkdir(root, "a", patha);
-    creat(root,"b",pathb);
-    TreeNode* pCur = cd(root,pathb2);
-    if(strcmp(pCur->name,"b") == 0){
+    creat(root, "b", pathb);
+    TreeNode *pCur = cd(root, pathb2);
+    if (strcmp(pCur->name, "b") == 0)
+    {
         printf("CD test passed\n");
-        TreeNode* pParent = pCur->parent;
+        TreeNode *pParent = pCur->parent;
         char pathc[] = "/a/b";
-        rm(root,pathc);
-        rmdir(root,"/a");
+        rm(root, pathc);
+        rmdir(root, "/a");
         free(root->children);
         free(root);
         return;
@@ -196,7 +200,8 @@ void testCd(){
     return;
 }
 
-void testLs(){
+void testLs()
+{
     Tree tree;
     initTree(&tree);
     char path[] = "/";
@@ -208,14 +213,13 @@ void testLs(){
     mkdir(root, "a", path);
     mkdir(root, "b", path);
     mkdir(root, "c", path);
-    ls(root,NULL);
+    ls(root, NULL);
     rmdir(root, patha);
     rmdir(root, pathb);
     rmdir(root, pathc);
     free(root->children);
     free(root);
     printf(" ls test passed");
-
 }
 
 void runTests()
@@ -231,10 +235,9 @@ void runTests()
     testMkdir();
     testRmdir();
     testCreat();
-    //leak on create
+    // leak on create
     testRm();
     testCd();
     testLs();
     printf("\n");
 }
-

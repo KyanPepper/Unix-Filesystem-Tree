@@ -2,14 +2,14 @@
 int main()
 {
 	// runTests();
-	
+
 	Tree tree;
 	initTree(&tree);
 	TreeNode *cwd = tree.root;
 	int i, j;
 	while (1)
 	{
-		char command[64]= "";
+		char command[64] = "";
 		char path[64] = "";
 		char name[64] = "";
 
@@ -25,25 +25,36 @@ int main()
 		else if (j == -7)
 		{
 			TreeNode *newCWD;
-			if(strlen(path) == 0){
-				 newCWD = tree.root;
-			}else if(strcmp(path,"..") == 0){
+			if (strlen(path) == 0)
+			{
+				newCWD = tree.root;
+			}
+			else if (strcmp(path, "..") == 0)
+			{
 				newCWD = cwd->parent;
-			}else{
-				newCWD = cd(cwd,path);
+			}
+			else
+			{
+				newCWD = cd(cwd, path);
 			}
 			if (newCWD != NULL && newCWD->type != 'f')
 			{
 				cwd = newCWD;
 			}
-			else if(newCWD != NULL && newCWD->type == 'f'){
-				printf("%s is not a directory!\n",newCWD->name);
+			else if (newCWD != NULL && newCWD->type == 'f')
+			{
+				printf("%s is not a directory!\n", newCWD->name);
 			}
-		}else if (j == -6){
+		}
+		else if (j == -6)
+		{
 			FILE *file = fopen("fssim_Kotschevar-Smead.txt", "w");
-			saveTree(tree.root,file,"");
+			saveTree(tree.root, file, "");
 			fclose(file);
 		}
 	}
 	printf("Quitting...");
+	FILE *file = fopen("fssim_Kotschevar-Smead.txt", "w");
+	saveTree(tree.root, file, "");
+	fclose(file);
 }

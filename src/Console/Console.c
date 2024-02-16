@@ -6,8 +6,8 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
     printf("$");
     fgets(input, sizeof(input), stdin);
     input[strcspn(input, "\n")] = '\0';
-    char temp[100] ="";
-    char temp2[100] ="";
+    char temp[100] = "";
+    char temp2[100] = "";
     char temp3[100] = "";
     char *token = NULL;
     token = strtok(input, " ");
@@ -19,7 +19,7 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
     strcpy(command, temp);
 
     token = strtok(NULL, " ");
-   
+
     if (token == NULL)
     {
         name = NULL;
@@ -47,10 +47,10 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
     return 1;
 }
 
-
 int findCommand(TreeNode *cwd, char *command, char *path, char *name)
 {
-    if (strcmp(command, "quit") == 0){
+    if (strcmp(command, "quit") == 0)
+    {
         return -1;
     }
     if (strcmp(command, "mkdir") == 0)
@@ -113,9 +113,9 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
             printf("'unknown operand %s'\n", name);
             return 0;
         }
-         if (strlen(path) == 0)
-        {   
-            ls(cwd,NULL);
+        if (strlen(path) == 0)
+        {
+            ls(cwd, NULL);
             return 1;
         }
         ls(cwd, path);
@@ -130,10 +130,10 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
         }
         pwd(cwd);
         return 1;
-    } 
+    }
     else if (strcmp(command, "save") == 0)
     {
-        if(strcmp(path, "fssim_Kotschevar-Smead")!= 0)
+        if (strcmp(path, "fssim_Kotschevar-Smead") != 0)
         {
             printf("'unknown file %s'\n", path);
             return 0;

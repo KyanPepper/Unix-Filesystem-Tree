@@ -37,7 +37,8 @@ void initTree(Tree *tree)
 
 TreeNode *matchTreeNode(List *list, char string[64])
 {
-    if(list == NULL){
+    if (list == NULL)
+    {
         return NULL;
     }
     LinkedNode *pcur = list->head;
@@ -55,7 +56,8 @@ TreeNode *matchTreeNode(List *list, char string[64])
 
 LinkedNode *matchListNode(List *list, char string[64])
 {
-    if(list == NULL){
+    if (list == NULL)
+    {
         return NULL;
     }
     LinkedNode *pcur = list->head;
@@ -71,9 +73,10 @@ LinkedNode *matchListNode(List *list, char string[64])
     return NULL;
 }
 
-LinkedNode *matchListNodeData(List *list, TreeNode* data)
+LinkedNode *matchListNodeData(List *list, TreeNode *data)
 {
-    if(list == NULL){
+    if (list == NULL)
+    {
         return NULL;
     }
     LinkedNode *pcur = list->head;
@@ -89,7 +92,6 @@ LinkedNode *matchListNodeData(List *list, TreeNode* data)
     return NULL;
 }
 
-
 int InsertTreeNodeUser(Tree *tree, char name[64], char type)
 {
     int index = -1;
@@ -98,6 +100,6 @@ int InsertTreeNodeUser(Tree *tree, char name[64], char type)
 
 int insertTreeNode(TreeNode *node, char name[64], char type)
 {
-        createTreeNode(name, type, node);
-        return 1;
+    createTreeNode(name, type, node);
+    return 1;
 }
