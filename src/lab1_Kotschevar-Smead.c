@@ -54,7 +54,7 @@ int main()
 		}
 		else if (j == -8)
 		{
-			FILE *file = fopen("fssim_Kotschevar-Smead.txt", "w");
+			FILE *file = fopen("fssim_Kotschevar-Smead.txt", "r");
 			loadTree(tree.root, file);
 			fclose(file);
 		}
