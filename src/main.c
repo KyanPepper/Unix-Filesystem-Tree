@@ -1,8 +1,8 @@
-
 #include "Console/Console.h"
 int main()
 {
 	// runTests();
+	
 	Tree tree;
 	initTree(&tree);
 	TreeNode *cwd = tree.root;
@@ -39,6 +39,10 @@ int main()
 			else if(newCWD != NULL && newCWD->type == 'f'){
 				printf("%s is not a directory!\n",newCWD->name);
 			}
+		}else if (j == -6){
+			FILE *file = fopen("fssim_Kotschevar-Smead.txt", "w");
+			saveTree(tree.root,file,"");
+			fclose(file);
 		}
 	}
 	printf("Quitting...");

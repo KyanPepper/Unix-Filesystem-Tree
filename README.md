@@ -3,3 +3,6 @@
 To run makefile cd into build then 
 "cmake CMakeLists.txt && make all && ./UTF"
 ./UFT in build file when built
+
+
+uncomment test to run them
