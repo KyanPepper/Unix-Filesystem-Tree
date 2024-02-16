@@ -1,5 +1,5 @@
 #include "Commands.h"
-#include "string.h"
+
 
 
 int mkdir(TreeNode *node, char name[64], char *pathname)
@@ -86,12 +86,17 @@ TreeNode* cd(TreeNode* node, char* path){
         child = matchTreeNode(pCur->children, string);
         if ((child == NULL) && (nextToken != NULL))
         {
-            printf("Error: Directory %s does not exist\n", token);
+            printf("Error: Directory %s does not exist\n", path);
             return NULL;
         }
         pCur = child;
         token = nextToken;
     }
+    if ((child == NULL))
+        {
+            printf("Error: Directory %s does not exist\n", path);
+            return NULL;
+        }
     return child;
 }
 
@@ -110,10 +115,15 @@ void ls(TreeNode* node, char *path){
 
 void pwd(TreeNode* node){
     TreeNode* pCur = node->parent;
-    if(strcmp(pCur->name,"/") == 0){
-        printf("/");
+    if(pCur != NULL){
+        pwd(pCur);
     }
-    printf("%s",node->name);
+    if(strcmp(node->name,"/") == 0){
+      printf("/");
+    }else{
+        printf("%s/",node->name);
+    } 
+    
 }
 
 

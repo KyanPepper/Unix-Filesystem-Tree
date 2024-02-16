@@ -15,7 +15,7 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
     {
         return 0;
     }
-    strcpy(temp, input);
+    strcpy(temp, token);
     strcpy(command, temp);
 
     token = strtok(NULL, " ");
@@ -26,7 +26,7 @@ int getInput(TreeNode *cwd, char *command, char *path, char *name)
         path = NULL;
         return 1;
     }
-    strcpy(temp2, input);
+    strcpy(temp2, token);
     strcpy(path, temp2);
 
     token = strtok(NULL, " ");
@@ -104,8 +104,7 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
             printf("'unknown operand %s'", name);
             return 0;
         }
-        cwd = cd(cwd, path);
-        return 1;
+        return -7;
     }
     else if (strcmp(command, "ls") == 0)
     {

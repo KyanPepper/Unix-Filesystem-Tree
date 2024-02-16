@@ -2,7 +2,7 @@
 #define LINKEDLIST_H
 #include <stdio.h>            
 #include <stdlib.h>   
-
+#include "string.h"
 //node for linked list (void* data is generic thus can use treenode make sure to cast)
 typedef struct LinkedNode {
 	void *data;
