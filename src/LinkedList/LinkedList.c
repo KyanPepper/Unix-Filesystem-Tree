@@ -93,7 +93,12 @@ int removeNode(List *list, LinkedNode *node)
             free(node);
             node = NULL;
             list->size -= 1;
+            if(list->head == list->tail && list->size == 1){
+                list->tail = NULL;
+                list->head->next =NULL; 
+            }
             return 1;
+
         }
 
         // remove if between head and tail
