@@ -9,7 +9,9 @@ int main()
 	int i, j;
 	while (1)
 	{
-		char command[64], path[64], name[64];
+		char command[64]= "";
+		char path[64] = "";
+		char name[64] = "";
 
 		i = getInput(cwd, command, path, name);
 		if (i == 1)

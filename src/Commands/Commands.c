@@ -111,6 +111,7 @@ void ls(TreeNode* node, char *path){
         return;
     }
     printList(pcur);
+    printf("/n");
 }
 
 void pwd(TreeNode* node){

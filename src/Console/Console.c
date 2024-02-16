@@ -113,6 +113,11 @@ int findCommand(TreeNode *cwd, char *command, char *path, char *name)
             printf("'unknown operand %s'", name);
             return 0;
         }
+         if (strlen(path) == 0)
+        {   
+            ls(cwd,NULL);
+            return 1;
+        }
         ls(cwd, path);
         return 1;
     }
