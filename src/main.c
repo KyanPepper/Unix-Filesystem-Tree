@@ -24,10 +24,20 @@ int main()
 		}
 		else if (j == -7)
 		{
-			TreeNode *newCWD = cd(cwd, path);
-			if (newCWD != NULL)
+			TreeNode *newCWD;
+			if(strlen(path) == 0){
+				 newCWD = tree.root;
+			}else if(strcmp(path,"..") == 0){
+				newCWD = cwd->parent;
+			}else{
+				newCWD = cd(cwd,path);
+			}
+			if (newCWD != NULL && newCWD->type != 'f')
 			{
 				cwd = newCWD;
+			}
+			else if(newCWD != NULL && newCWD->type == 'f'){
+				printf("%s is not a directory!\n",newCWD->name);
 			}
 		}
 	}

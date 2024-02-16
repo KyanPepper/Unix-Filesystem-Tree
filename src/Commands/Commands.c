@@ -73,6 +73,7 @@ TreeNode* cd(TreeNode* node, char* path){
     if(path == NULL){
         while(strcmp(pCur->name, "/") != 0) {
             pCur = pCur->parent;
+            return pCur;
         }
     }
     char *token = strtok(path, "/");
@@ -103,15 +104,17 @@ TreeNode* cd(TreeNode* node, char* path){
 void ls(TreeNode* node, char *path){
     if(path == NULL){
         printList(node->children);
+        printf("\n");
         return;
     }
     TreeNode* pcur = cd(node,path);
     if(pcur == NULL){
         printf("Error: Directory Path Doesnt Exit");
+        printf("\n");
         return;
     }
     printList(pcur);
-    printf("/n");
+    printf("\n");
 }
 
 void pwd(TreeNode* node){
