@@ -24,5 +24,5 @@ To run the program, follow these steps:
 1. Navigate to the `build` directory then run:
 ```bash
 cd ./build
-cmake CMakeLists.txt && make all && ./UTF
-./UTF
+cmake CMakeLists.txt && make all && ./UFT
+./UFT

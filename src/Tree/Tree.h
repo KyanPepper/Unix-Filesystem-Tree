@@ -39,3 +39,6 @@ extern int insertTreeNode(TreeNode *node, char name[64], char type);
 
 // prints value for tree
 extern void printTree();
+
+// deletes tree node and all children
+extern int deleteTreeNode(TreeNode *node);

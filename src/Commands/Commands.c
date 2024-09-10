@@ -4,8 +4,16 @@ int mkdir(TreeNode *node, char name[64], char *pathname)
 {
     if ((pathname == NULL) || strcmp(pathname, "/") == 0)
     {
-        insertTreeNode(node, name, 'd');
-        return 1;
+        //None matching node in list
+        if(matchTreeNode(node->children, name) == NULL){
+            insertTreeNode(node, name, 'd');
+            return 1;
+        }
+        //Matching node in list
+        else{
+            printf("Directory %s already exists\n", name);
+            return 0;
+        }
     }
     TreeNode *pCur = cd(node, pathname);
     if (pCur == NULL)

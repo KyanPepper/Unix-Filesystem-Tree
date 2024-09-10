@@ -103,3 +103,20 @@ int insertTreeNode(TreeNode *node, char name[64], char type)
     createTreeNode(name, type, node);
     return 1;
 }
+
+int deleteTreeNode(TreeNode *node)
+{
+    if (node->children != NULL)
+    {
+        LinkedNode *pcur = node->children->head;
+        while (pcur != NULL)
+        {
+            TreeNode *pdata = (TreeNode *)pcur->data;
+            deleteTreeNode(pdata);
+            pcur = pcur->next;
+        }
+        free(node->children);
+    }
+    free(node);
+    return 1;
+}
