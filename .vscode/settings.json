@@ -1,3 +1,4 @@
 {
-    "cmake.sourceDirectory": "/home/kyan/projects/Unix-Filesystem-Tree/build"
+    "cmake.sourceDirectory": "/home/kyan/projects/Unix-Filesystem-Tree/build",
+    "editor.formatOnSave": true
 }

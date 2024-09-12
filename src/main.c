@@ -46,21 +46,20 @@ int main()
 				printf("%s is not a directory!\n", newCWD->name);
 			}
 		}
+		// save tree
 		else if (j == -6)
 		{
-			FILE *file = fopen("treefile.txt", "w");
-			saveTree(tree.root, file, "");
-			fclose(file);
+
+			saveTree(tree.root);
 		}
+		// load tree
 		else if (j == -8)
 		{
-			FILE *file = fopen("treefile.txt", "r");
-			loadTree(tree.root, file);
-			fclose(file);
+
+			// Tree newTree = loadTree();
+			// cwd = newTree.root;
 		}
 	}
 	printf("Quitting...\n");
-	FILE *file = fopen("treefile.txt", "w");
-	saveTree(tree.root, file, "");
-	fclose(file);
+	saveTree(tree.root);
 }

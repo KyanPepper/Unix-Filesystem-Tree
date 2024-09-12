@@ -18,7 +18,7 @@ Demo: https://youtu.be/GF_eHr06B5c
 - `reload`: Deserialize and load the filesystem tree from a file.
 
 ### Running the Program
-Seriaized trees files will be located in the build folder
+Serialized trees files will be located in the build folder
 To run the program, follow these steps:
 
 1. Navigate to the `build` directory then run:

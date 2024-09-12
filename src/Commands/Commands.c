@@ -4,13 +4,15 @@ int mkdir(TreeNode *node, char name[64], char *pathname)
 {
     if ((pathname == NULL) || strcmp(pathname, "/") == 0)
     {
-        //None matching node in list
-        if(matchTreeNode(node->children, name) == NULL){
+        // None matching node in list
+        if (matchTreeNode(node->children, name) == NULL)
+        {
             insertTreeNode(node, name, 'd');
             return 1;
         }
-        //Matching node in list
-        else{
+        // Matching node in list
+        else
+        {
             printf("Directory %s already exists\n", name);
             return 0;
         }
@@ -38,8 +40,12 @@ int rmdir(TreeNode *node, char *pathname)
         return 0;
     }
     TreeNode *parent = pCur->parent;
-    TreeNode *listParentNode = matchListNodeData(parent->children, pCur);
-    free(pCur->children);
+    LinkedNode *listParentNode = matchListNodeData(parent->children, pCur);
+    if (pCur->children->size > 0)
+    {
+        printf("Directory %s is not empty\n", pCur->name);
+        return 0;
+    }
     free(pCur);
     removeNode(parent->children, listParentNode);
     return 1;
@@ -76,7 +82,7 @@ int rm(TreeNode *node, char *pathname)
         return 0;
     }
     TreeNode *parent = pCur->parent;
-    TreeNode *listParentNode = matchListNodeData(parent->children, pCur);
+    LinkedNode *listParentNode = matchListNodeData(parent->children, pCur);
     free(pCur);
     removeNode(parent->children, listParentNode);
     return 1;
@@ -110,7 +116,7 @@ TreeNode *cd(TreeNode *node, char *path)
         pCur = child;
         token = nextToken;
     }
-    if ((child == NULL))
+    if (child == NULL)
     {
         printf("Error: Directory %s does not exist\n", path);
         return NULL;
@@ -129,11 +135,11 @@ void ls(TreeNode *node, char *path)
     TreeNode *pcur = cd(node, path);
     if (pcur == NULL)
     {
-        printf("Error: Directory Path Doesnt Exit");
+        printf("Error: Directory Path doesn't Exit");
         printf("\n");
         return;
     }
-    printList(pcur);
+    printList(pcur->children);
     printf("\n");
 }
 

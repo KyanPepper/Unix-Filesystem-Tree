@@ -1,74 +1,38 @@
-#include "Serializer.h";
+#include "Serializer.h"
 
-void saveTree(TreeNode *node, FILE *file, char *parents)
+void saveTree(TreeNode *node)
 {
-    if (node != NULL)
-    {
-        char *new_parents;
-        if (node->parent != NULL && strcmp(node->parent->name, "/") != 0)
-        {
-            asprintf(&new_parents, "%s/%s", parents, node->name);
-        }
-        else
-        {
-            asprintf(&new_parents, "%s%s", parents, node->name);
-        }
-        fprintf(file, "%c %s\n", node->type, new_parents);
-
-        LinkedNode *child;
-        if (node->children != NULL)
-        {
-            child = node->children->head;
-            while (child != NULL)
-            {
-                TreeNode *newNode = (TreeNode *)child->data;
-                saveTree(newNode, file, new_parents);
-                child = child->next;
-            }
-        }
-
-        free(new_parents);
-    }
+    FILE *file = fopen("treefile.txt", "w");
+    saveTreeHelper(node, file, "");
+    fclose(file);
 }
 
-void loadTree(TreeNode *node, FILE *file)
+void saveTreeHelper(TreeNode *node, FILE *file, char *path)
 {
-
-    char line[100];
-    while (fgets(line, sizeof(line), file) != NULL)
+    if (node == NULL)
     {
-        while (fgets(line, sizeof(line), file) != NULL)
+        return;
+    }
+
+    fprintf(file, "%c %s%s\n", node->type, path, node->name);
+    // is a directory
+    if (node->type == 'd')
+    {
+        LinkedNode *pcur = node->children->head;
+        while (pcur != NULL)
         {
-            char type;
-            char name[50];
-            char path[100];
-            sscanf(line, "%c %s\n", &type, path);
-            char *token;
-            char *last_part = NULL;
-            char *in_between = NULL;
-            token = strtok(path, "/");
-            while (token != NULL)
+            TreeNode *pdata = (TreeNode *)pcur->data;
+
+            char newPath[64];
+            strcpy(newPath, path);
+            strcat(newPath, node->name);
+            if (strcmp(newPath, "/") != 0)
             {
-                in_between = last_part;
-                last_part = token;
-                token = strtok(NULL, "/");
+                strcat(newPath, "/");
             }
-            strcpy(name, last_part);
-            if (in_between != NULL)
-            {
-                strcat(in_between, "/");
-                strcat(in_between, name);
-                strcpy(name, in_between);
-            }
-            if (type == 'd')
-            {
-                mkdir(node, name, path);
-            }
-            else
-            {
-                creat(node, name, path);
-            }
+            saveTreeHelper(pdata, file, newPath);
+
+            pcur = pcur->next;
         }
-        fclose(file);
     }
 }
